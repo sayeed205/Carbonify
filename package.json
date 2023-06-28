@@ -1,0 +1,46 @@
+{
+    "name": "carbonify",
+    "version": "0.0.1",
+    "description": "A simple telegram bot for your carbonified code",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon -e ts -x ts-node src/index.ts",
+        "build": "ncc build src/index.ts -o public -m",
+        "format": "prettier --write \"**/*.ts\" --cache"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sayeed205/Carbonify.git"
+    },
+    "keywords": [
+        "telegram",
+        "bot",
+        "carbon",
+        "code",
+        "snippets"
+    ],
+    "author": {
+        "name": "Sayed Ahmed",
+        "email": "sayeed205@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sayeed205/Carbonify/issues"
+    },
+    "homepage": "https://github.com/sayeed205/Carbonify#readme",
+    "dependencies": {
+        "@vercel/node": "^2.15.2",
+        "dotenv": "^16.0.3",
+        "telegraf": "^4.12.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.3.2",
+        "@types/nodemon": "^1.19.2",
+        "@types/prettier": "^2.7.3",
+        "@vercel/ncc": "^0.36.1",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.7",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.1.5"
+    }
+}
