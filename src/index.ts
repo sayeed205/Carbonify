@@ -12,6 +12,13 @@ const ENVIRONMENT = process.env.NODE_ENV || '';
 
 const bot = new Telegraf(BOT_TOKEN);
 
+bot.use(async (ctx, next) => {
+    const start = new Date().valueOf();
+    await next();
+    const ms = new Date().valueOf() - start;
+    console.log('Response time: %sms', ms);
+});
+
 bot.start(startCMD);
 bot.command('about', aboutCMD);
 bot.on('message', greeting);

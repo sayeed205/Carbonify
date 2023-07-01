@@ -1,17 +1,34 @@
+import Graphite from 'graphite-io';
 import { Context } from 'telegraf';
-
-const replyToMessage = (ctx: Context, messageId: number, string: string) =>
-    ctx.replyWithPhoto(string, {
-        reply_to_message_id: messageId,
-    });
+import { Message } from 'telegraf/typings/core/types/typegram';
 
 const greeting = async (ctx: Context) => {
-    const messageId = ctx.message?.message_id;
-    const userName = `${ctx.message?.from.first_name} ${ctx.message?.from.last_name}`;
+    try {
+        const msg = ctx.message as Message.TextMessage;
+        if (!('text' in msg)) {
+            ctx.replyWithMarkdownV2(
+                'Please send me a text message or codeblock'
+            );
+        }
 
-    if (messageId) {
-        await replyToMessage(ctx, messageId, `Hello, ${userName}!`);
+        const text = msg.text;
+
+        const graphite = new Graphite(text, 'javascript', 'one-dark-pro');
+
+        const image = await graphite.png();
+
+        // ctx.replyWithMarkdownV2(escapeMD2(code))
+        ctx.replyWithPhoto(
+            {
+                source: image,
+            },
+            { caption: 'Hello' }
+        );
+    } catch (error) {
+        console.log(error);
     }
+
+    //    ctx.replyWithPhoto( , { caption: 'Hello' })
 };
 
 export { greeting };

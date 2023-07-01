@@ -2,7 +2,6 @@ import { Context, Telegraf } from 'telegraf';
 
 import { Update } from 'telegraf/typings/core/types/typegram';
 
-
 const development = async (bot: Telegraf<Context<Update>>) => {
     const botInfo = (await bot.telegram.getMe()).username;
 

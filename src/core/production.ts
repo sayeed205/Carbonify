@@ -2,7 +2,6 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import { Context, Telegraf } from 'telegraf';
 import { Update } from 'telegraf/typings/core/types/typegram';
 
-
 const PORT = (process.env.PORT && parseInt(process.env.PORT, 10)) || 3000;
 const VERCEL_URL = `${process.env.VERCEL_URL}`;
 
